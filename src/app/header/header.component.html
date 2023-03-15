@@ -1,0 +1,44 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+/>
+<div class="header">
+  <div class="header-top">
+    <p class="p1">
+      NEW ARRIVAL ALERT: BANDANAS ARE NOW LIVE - <a href="/">EXPLORE HERE</a>
+    </p>
+    <div class="icons">
+      <i class="fa-solid fa-magnifying-glass icon"></i>
+      <i class="fa-solid fa-bag-shopping icon"></i>
+      <span>0 . Rs.0</span>
+    </div>
+  </div>
+  <div class="header-bottom">
+    <div class="img-div">
+      <img src="../../assets/Capture.PNG" />
+      <i
+        (click)="changingView()"
+        *ngIf="!display"
+        class="fa-solid fa-bars menu"
+      ></i>
+      <i
+        (click)="changingView()"
+        *ngIf="display"
+        class="fa-solid fa-xmark menu"
+      ></i>
+      
+    </div>
+
+    <div class="list-div">
+      <ul *ngIf="display" class="unorder">
+        <li class="li-tag">Home</li>
+        <li class="li-tag">Create Your Own</li>
+        <li class="li-tag">Collections</li>
+        <li class="li-tag">Men</li>
+        <li class="li-tag">Women</li>
+        <li class="li-tag">Kids</li>
+        <li class="li-tag">Contact</li>
+      </ul>
+    </div>
+  </div>
+</div>

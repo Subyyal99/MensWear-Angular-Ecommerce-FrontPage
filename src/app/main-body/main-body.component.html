@@ -1,0 +1,96 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+/>
+<div class="main">
+  <div class="top">
+    <p class="shop">Shop Men's Wear Online</p>
+    <button (click)="changingView()" class="btn">Sort & Filter</button>
+
+    <div *ngIf="display" class="part">
+      <div class="show">
+        <p>Show</p>
+        <span>12</span>
+        <span style="color: gray">24</span>
+        <span style="color: gray">36</span>
+        <span style="color: gray">48</span>
+      </div>
+      <div class="home">
+        <p><a href="/">Home </a> | Shop Men's Wear Online</p>
+      </div>
+      <div class="feature">
+        <select class="select" (change)="hightolow($event.target)">
+          <option class="opt" value="1">Featured</option>
+          <option class="opt" value="2">Best Selling</option>
+          <option class="opt" value="3">Price, High to Low</option>
+          <option class="opt" value="4">Price, Low to High</option>
+        </select>
+      </div>
+    </div>
+    <hr />
+  </div>
+
+  <div class="section">
+    <div *ngIf="display" class="side-div">
+      <div class="available-div">
+        <p>Availability</p>
+        <input class="available" type="checkbox" value="In Stock" />In Stock
+        <br />
+        <input class="available" type="checkbox" value="Out of Stock" />Out of
+        stock
+      </div>
+      <hr />
+      <div class="price-div">
+        <p>Price</p>
+        <!-- [min]="Inputmin > 0 ? Inputmin : 0"
+          [max]="Inputmax < 10000 ? Inputmax : 10000" -->
+        <npn-slider
+          [min]="0"
+          [max]="10000"
+          (onChange)="onSliderChange($event)"
+          [step]="500"
+          [showStepIndicator]="true"
+          []
+        ></npn-slider>
+
+        <div class="showPrice">
+          <!-- <input [(ngModel)]="Inputmin" (ngModelChange)="valuechange($event)" value="Inputmin" />
+          <input [(ngModel)]="Inputmax" value="Inputmax" />
+          <h2>{{ Inputmin }}</h2>
+           -->
+          <span class="priceSpan">{{ min > 0 ? min : 0 }}</span>
+          <span class="priceSpan">{{ max }}</span>
+        </div>
+      </div>
+      <hr />
+    </div>
+
+    <div class="body-div">
+      <div
+        *ngFor="let p of product; let i = index"
+        (mouseleave)="Undisplay()"
+        (mouseenter)="displaying(i)"
+        class="product"
+      >
+        <div>
+          <img [src]="p.imageUrl" />
+        </div>
+        <div>
+          <h4>{{ p.productName }}</h4>
+        </div>
+        <div class="reviews">
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star checked"></span>
+          <span class="fa fa-star unchecked"></span>
+          <span class="review-span">{{ i * i }} Reviews</span>
+          <h4>Rs {{ p.price }}</h4>
+        </div>
+        <div [class.hovered]="hoveredIndex === i" class="quick">
+          <button>Quick Shop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
